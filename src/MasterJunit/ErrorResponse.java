@@ -16,4 +16,9 @@ public class ErrorResponse implements Response{
 	public Exception getOriginalException(){
 		return this.originalException;
 	}
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
