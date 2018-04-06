@@ -1,6 +1,7 @@
 package MasterJunit;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.config.RuntimeBeanNameReference;
 
@@ -112,6 +113,23 @@ public class TestDefaultController {
 		
 		controller.addHandler(request, handler);
 		
+	}
+	
+	@Test(timeout=13)
+	@Ignore(value="Ignore...")
+	public void testProcessMultipleRequestTimeout() {
+		Request request;
+		Response response = new SampleResponse();
+		RequestHandler handler = new SampleHandler();
+		
+		for (int i = 0; i < 9999; i++) {
+			request = new SampleRequest(String.valueOf(i));
+			controller.addHandler(request,handler);
+			response = controller.processRequest(request);
+			assertNotNull(response);
+			assertNotSame(ErrorResponse.class, response.getClass());
+			
+		}
 	}
 }
 
