@@ -111,6 +111,7 @@ public class TestDefaultController {
 		SampleHandler handler = new SampleHandler();
 		
 		controller.addHandler(request, handler);
+		
 	}
 }
 
